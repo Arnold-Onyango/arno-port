@@ -77,17 +77,17 @@ export default function ProjectModal({ project, onClose }: Props) {
             aria-hidden="true"
           />
 
-          {/* Panel */}
+          {/* Panel — opacity-only entrance so the hero layout morph stays clean */}
           <motion.div
             key="modal"
             ref={panelRef}
             role="dialog"
             aria-modal="true"
             aria-label={`${project.title} case study`}
-            initial={{ opacity: 0, y: 48, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 24, scale: 0.97 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
             className="fixed z-50 overflow-y-auto bg-cream rounded-2xl shadow-2xl"
             style={{
               inset: '16px',
@@ -95,8 +95,9 @@ export default function ProjectModal({ project, onClose }: Props) {
               margin: '0 auto',
             }}
           >
-            {/* Hero image */}
-            <div
+            {/* Hero image — shared element, morphs from the clicked card */}
+            <motion.div
+              layoutId={`media-${project.id}`}
               className="relative overflow-hidden rounded-t-2xl"
               style={{
                 aspectRatio: '16/7',
@@ -137,7 +138,7 @@ export default function ProjectModal({ project, onClose }: Props) {
                   {project.category}
                 </span>
               </div>
-            </div>
+            </motion.div>
 
             {/* Content */}
             <div className="p-7 md:p-10">

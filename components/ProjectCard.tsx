@@ -34,22 +34,24 @@ export default function ProjectCard({ project, index, onClick }: Props) {
         className="relative overflow-hidden"
         style={{ aspectRatio: '4/3' }}
       >
-        <div
-          className="absolute inset-0 transition-transform duration-700 group-hover:scale-105"
+        {/* Shared element — morphs into the modal hero on open */}
+        <motion.div
+          layoutId={`media-${project.id}`}
+          className="absolute inset-0"
           style={{
             background: `linear-gradient(135deg, ${project.gradientFrom} 0%, ${project.gradientTo} 100%)`,
           }}
-        />
-
-        {/* Grid overlay on image */}
-        <div
-          className="absolute inset-0 opacity-10"
-          style={{
-            backgroundImage:
-              'linear-gradient(to right, rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.3) 1px, transparent 1px)',
-            backgroundSize: '40px 40px',
-          }}
-        />
+        >
+          {/* Grid overlay on image */}
+          <div
+            className="absolute inset-0 opacity-10 transition-transform duration-700 group-hover:scale-105"
+            style={{
+              backgroundImage:
+                'linear-gradient(to right, rgba(255,255,255,0.3) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.3) 1px, transparent 1px)',
+              backgroundSize: '40px 40px',
+            }}
+          />
+        </motion.div>
 
         {/* Ghost title */}
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden">

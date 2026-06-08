@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Playfair_Display, DM_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import Providers from '@/components/Providers'
+import Cursor from '@/components/Cursor'
 import { SITE_URL, EMAIL, SOCIALS } from '@/lib/site'
 import './globals.css'
 
@@ -75,6 +76,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${playfair.variable} ${dmSans.variable} scroll-smooth`}>
       <body>
         <a href="#work" className="skip-link">Skip to content</a>
+        <Cursor />
         <div className="grain-overlay" aria-hidden="true" />
         <Providers>{children}</Providers>
         <Analytics />
