@@ -71,7 +71,7 @@ export default function ProjectGrid() {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-12 text-center"
         >
-          <p className="text-sm text-charcoal/30">
+          <p className="text-sm text-charcoal/50">
             Click any card to read the full case study
           </p>
         </motion.div>

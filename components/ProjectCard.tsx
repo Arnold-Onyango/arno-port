@@ -20,7 +20,12 @@ export default function ProjectCard({ project, index, onClick }: Props) {
       onClick={onClick}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => e.key === 'Enter' && onClick()}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault()
+          onClick()
+        }
+      }}
       aria-label={`View ${project.title} case study`}
       className="group cursor-pointer rounded-2xl overflow-hidden bg-white border border-charcoal/[0.07] hover:border-amber hover:shadow-[0_20px_60px_-15px_rgba(26,26,26,0.18)] hover:-translate-y-1.5 transition-all duration-400 focus-visible:outline-2 focus-visible:outline-amber focus-visible:outline-offset-2"
     >

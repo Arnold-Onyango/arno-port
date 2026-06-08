@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import { EMAIL, MAILTO_PREFILLED } from '@/lib/site'
 
 const NAV_LINKS = [
   { label: 'Work',     href: '#work'     },
@@ -62,7 +63,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="mailto:arnoldonyangor@gmail.com"
+              href={MAILTO_PREFILLED}
               className="text-[13px] font-semibold bg-charcoal text-cream px-5 py-2.5 rounded-full hover:bg-amber hover:text-charcoal transition-all duration-300 tracking-wide"
             >
               Hire Me
@@ -116,13 +117,13 @@ export default function Navbar() {
               className="mt-auto"
             >
               <a
-                href="mailto:arnoldonyangor@gmail.com"
+                href={MAILTO_PREFILLED}
                 onClick={closeMenu}
                 className="inline-flex bg-charcoal text-cream px-7 py-3.5 rounded-full font-semibold text-sm tracking-wide hover:bg-amber hover:text-charcoal transition-all duration-300"
               >
                 Hire Me →
               </a>
-              <p className="mt-4 text-xs text-charcoal/30">arnoldonyangor@gmail.com</p>
+              <p className="mt-4 text-xs text-charcoal/40">{EMAIL}</p>
             </motion.div>
           </motion.div>
         )}

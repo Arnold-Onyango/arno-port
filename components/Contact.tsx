@@ -1,6 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Github, Linkedin, FileText } from 'lucide-react'
+import { EMAIL, MAILTO, MAILTO_PREFILLED, SOCIALS } from '@/lib/site'
 
 export default function Contact() {
   const year = new Date().getFullYear()
@@ -70,7 +72,7 @@ export default function Contact() {
           className="flex flex-col sm:flex-row items-start sm:items-center gap-5 mb-6"
         >
           <a
-            href="mailto:arnoldonyangor@gmail.com"
+            href={MAILTO_PREFILLED}
             className="group inline-flex items-center gap-3 bg-amber text-charcoal px-9 py-4.5 rounded-full text-sm font-bold tracking-wide hover:bg-cream transition-colors duration-300"
             style={{ paddingTop: '1.1rem', paddingBottom: '1.1rem' }}
           >
@@ -80,10 +82,10 @@ export default function Contact() {
             </span>
           </a>
           <a
-            href="mailto:arnoldonyangor@gmail.com"
-            className="text-sm text-cream/35 hover:text-cream/60 transition-colors"
+            href={MAILTO}
+            className="text-sm text-cream/45 hover:text-cream/70 transition-colors"
           >
-            arnoldonyangor@gmail.com
+            {EMAIL}
           </a>
         </motion.div>
 
@@ -92,26 +94,47 @@ export default function Contact() {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="text-[13px] text-cream/25"
+          className="text-[13px] text-cream/45"
         >
           Usually respond within 24 hours.
         </motion.p>
 
         {/* Footer bar */}
         <div className="mt-24 md:mt-32 pt-8 border-t border-cream/[0.07] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <p className="font-display text-cream/30 text-sm">
+          <p className="font-display text-cream/45 text-sm">
             Arno<span className="text-amber">.</span> — Kampala, Uganda
           </p>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-5">
             <a
-              href="mailto:arnoldonyangor@gmail.com"
-              className="text-[12px] text-cream/20 hover:text-cream/50 transition-colors"
+              href={SOCIALS.linkedin}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="text-cream/45 hover:text-amber transition-colors"
             >
-              Email
+              <Linkedin className="w-[18px] h-[18px]" />
             </a>
-            <span className="text-cream/10">·</span>
-            <p className="text-[12px] text-cream/15">
+            <a
+              href={SOCIALS.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="text-cream/45 hover:text-amber transition-colors"
+            >
+              <Github className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href={SOCIALS.resume}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[12px] font-medium text-cream/45 hover:text-amber transition-colors"
+            >
+              <FileText className="w-[15px] h-[15px]" />
+              Resume
+            </a>
+            <span className="text-cream/20">·</span>
+            <p className="text-[12px] text-cream/40">
               © {year} Arnold Onyango
             </p>
           </div>

@@ -1,9 +1,10 @@
 'use client'
 
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { X, ArrowUpRight, Tag } from 'lucide-react'
 import type { Project } from '@/data/projects'
+import { EMAIL } from '@/lib/site'
 
 interface Props {
   project: Project | null
@@ -11,16 +12,52 @@ interface Props {
 }
 
 export default function ProjectModal({ project, onClose }: Props) {
+  const panelRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     if (!project) return
 
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+    // Remember what was focused so we can restore it on close
+    const previouslyFocused = document.activeElement as HTMLElement | null
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose()
+        return
+      }
+      // Trap Tab focus inside the dialog
+      if (e.key === 'Tab') {
+        const panel = panelRef.current
+        if (!panel) return
+        const focusables = panel.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+        )
+        if (focusables.length === 0) return
+        const first = focusables[0]
+        const last = focusables[focusables.length - 1]
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault()
+          last.focus()
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault()
+          first.focus()
+        }
+      }
+    }
+
     window.addEventListener('keydown', onKey)
     document.body.style.overflow = 'hidden'
+
+    // Move focus into the dialog once it has mounted
+    const focusTimer = window.setTimeout(() => {
+      panelRef.current?.querySelector<HTMLElement>('button, a[href]')?.focus()
+    }, 0)
 
     return () => {
       window.removeEventListener('keydown', onKey)
       document.body.style.overflow = ''
+      window.clearTimeout(focusTimer)
+      previouslyFocused?.focus?.()
     }
   }, [project, onClose])
 
@@ -43,6 +80,7 @@ export default function ProjectModal({ project, onClose }: Props) {
           {/* Panel */}
           <motion.div
             key="modal"
+            ref={panelRef}
             role="dialog"
             aria-modal="true"
             aria-label={`${project.title} case study`}
@@ -145,7 +183,11 @@ export default function ProjectModal({ project, onClose }: Props) {
               {/* Divider */}
               <div className="border-t border-charcoal/[0.07] pt-7 flex flex-col sm:flex-row items-start sm:items-center gap-4">
                 <a
-                  href="mailto:arnoldonyangor@gmail.com"
+                  href={`mailto:${EMAIL}?subject=${encodeURIComponent(
+                    `Re: ${project.title} — let's talk`
+                  )}&body=${encodeURIComponent(
+                    `Hi Arnold,\n\nI saw the ${project.title} case study on your portfolio and I'd like to discuss something similar.\n\n`
+                  )}`}
                   className="inline-flex items-center gap-2 bg-charcoal text-cream px-6 py-3 rounded-full text-sm font-semibold hover:bg-amber hover:text-charcoal transition-all duration-300"
                 >
                   Discuss This Project

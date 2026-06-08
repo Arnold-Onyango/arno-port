@@ -1,12 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-const STATS = [
-  { value: '4 yrs',  label: 'Experience'  },
-  { value: '30+',    label: 'Clients'      },
-  { value: '5+',     label: 'Countries'    },
-]
+import { MAILTO_PREFILLED } from '@/lib/site'
 
 export default function About() {
   return (
@@ -50,33 +45,13 @@ export default function About() {
               </div>
             </div>
 
-            {/* Stat chips */}
-            <div className="flex gap-8 mt-10">
-              {STATS.map(({ value, label }, i) => (
-                <motion.div
-                  key={label}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
-                >
-                  <p className="font-display text-3xl md:text-4xl font-bold text-charcoal leading-none">
-                    {value}
-                  </p>
-                  <p className="text-xs text-charcoal/35 mt-1.5 tracking-wide uppercase">
-                    {label}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-
             {/* Tool badges */}
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.45, duration: 0.5 }}
-              className="flex flex-wrap gap-2 mt-8"
+              className="flex flex-wrap gap-2 mt-10"
             >
               {['Figma', 'Framer', 'Webflow', 'React', 'Next.js', 'Tailwind'].map((tool) => (
                 <span
@@ -127,7 +102,7 @@ export default function About() {
             </div>
 
             <motion.a
-              href="mailto:arnoldonyangor@gmail.com"
+              href={MAILTO_PREFILLED}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

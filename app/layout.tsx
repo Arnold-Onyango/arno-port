@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, DM_Sans } from 'next/font/google'
+import Providers from '@/components/Providers'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Arnold Onyango' }],
   openGraph: {
     title: 'Arno — UI/UX Designer & Developer',
-    description: 'I design interfaces people remember.',
+    description: 'Designer & developer — I design it, then I build it. No hand-off, no gap.',
     type: 'website',
     locale: 'en_US',
     images: [
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Arno — UI/UX Designer & Developer',
-    description: 'I design interfaces people remember.',
+    description: 'Designer & developer — I design it, then I build it. No hand-off, no gap.',
     images: ['/og-image.png'],
   },
   robots: {
@@ -54,8 +55,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable} scroll-smooth`}>
       <body>
+        <a href="#work" className="skip-link">Skip to content</a>
         <div className="grain-overlay" aria-hidden="true" />
-        {children}
+        <Providers>{children}</Providers>
       </body>
     </html>
   )

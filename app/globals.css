@@ -75,3 +75,36 @@ body {
 /* ─── Utility: no scrollbar ─────────────────────── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ─── Skip link (keyboard a11y) ─────────────────── */
+.skip-link {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  transform: translateY(-120%);
+  background: #1A1A1A;
+  color: #F7F5F2;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0 0 0.5rem 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: transform 0.2s ease;
+}
+.skip-link:focus {
+  transform: translateY(0);
+  outline: 2px solid #F5A623;
+  outline-offset: 2px;
+}
+
+/* ─── Reduced motion ────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .grain-overlay { animation: none; }
+  .hero-grid { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
+import { MAILTO_PREFILLED } from '@/lib/site'
 
 const WORDS = ['Ecommerce', 'Fintech', 'SaaS', 'Wellness']
 
@@ -100,7 +101,7 @@ export default function Hero() {
           transition={{ duration: 0.6, delay: 0.55, ease }}
           className="font-display text-xl md:text-2xl font-medium italic text-charcoal/50 mb-6 max-w-lg"
         >
-          "I design interfaces people remember."
+          "I design it, then I build it — no hand-off, no gap."
         </motion.p>
 
         {/* Rotating word strip */}
@@ -138,7 +139,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.78 }}
-          className="text-xs tracking-[0.18em] uppercase text-charcoal/25 mb-12"
+          className="text-xs tracking-[0.18em] uppercase text-charcoal/45 mb-12"
         >
           Figma · Framer · Webflow · React
         </motion.p>
@@ -160,7 +161,7 @@ export default function Hero() {
             </span>
           </a>
           <a
-            href="mailto:arnoldonyangor@gmail.com"
+            href={MAILTO_PREFILLED}
             className="inline-flex items-center gap-2 border border-charcoal/20 text-charcoal px-8 py-4 rounded-full text-sm font-semibold tracking-wide hover:border-charcoal hover:bg-charcoal hover:text-cream transition-all duration-300"
           >
             Hire Me
@@ -174,12 +175,12 @@ export default function Hero() {
           transition={{ delay: 1.4, duration: 0.8 }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 cursor-default select-none"
         >
-          <span className="text-[10px] tracking-[0.2em] uppercase text-charcoal/25">Scroll</span>
+          <span className="text-[10px] tracking-[0.2em] uppercase text-charcoal/45">Scroll</span>
           <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.8, ease: 'easeInOut' }}
           >
-            <ArrowDown className="w-4 h-4 text-charcoal/25" />
+            <ArrowDown className="w-4 h-4 text-charcoal/40" />
           </motion.div>
         </motion.div>
       </div>
