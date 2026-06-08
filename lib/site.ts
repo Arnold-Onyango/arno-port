@@ -27,8 +27,8 @@ export const MAILTO = `mailto:${EMAIL}`
 
 export const SOCIALS = {
   github: 'https://github.com/Arnold-Onyango',
-  // TODO: replace with your real LinkedIn URL
-  linkedin: 'https://www.linkedin.com/in/arnold-onyango/',
+  linkedin: 'https://www.linkedin.com/in/arnold-onyango-63b3003b3/',
+  twitter: 'https://x.com/arnoldOnyango_R',
   // TODO: drop a resume.pdf into /public to enable this download
   resume: '/resume.pdf',
 }

@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, FileText } from 'lucide-react'
+import { Github, Linkedin, FileText, Twitter } from 'lucide-react'
 import { EMAIL, MAILTO, MAILTO_PREFILLED, SOCIALS } from '@/lib/site'
 
 export default function Contact() {
@@ -123,6 +123,15 @@ export default function Contact() {
               className="text-cream/45 hover:text-amber transition-colors"
             >
               <Github className="w-[18px] h-[18px]" />
+            </a>
+            <a
+              href={SOCIALS.twitter}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="X (Twitter)"
+              className="text-cream/45 hover:text-amber transition-colors"
+            >
+              <Twitter className="w-[18px] h-[18px]" />
             </a>
             <a
               href={SOCIALS.resume}
