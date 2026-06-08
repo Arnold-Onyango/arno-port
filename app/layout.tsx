@@ -1,6 +1,8 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, DM_Sans } from 'next/font/google'
+import { Analytics } from '@vercel/analytics/next'
 import Providers from '@/components/Providers'
+import { SITE_URL, EMAIL, SOCIALS } from '@/lib/site'
 import './globals.css'
 
 const playfair = Playfair_Display({
@@ -19,7 +21,7 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://arno.design'),
+  metadataBase: new URL(SITE_URL),
   title: 'Arno — UI/UX Designer & Developer',
   description:
     'Arnold Onyango is a UI/UX designer and developer based in Kampala, Uganda, crafting digital products for ecommerce, fintech, SaaS, and wellness.',
@@ -51,6 +53,23 @@ export const metadata: Metadata = {
   },
 }
 
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Arnold Onyango',
+  alternateName: 'Arno',
+  jobTitle: 'UI/UX Designer & Developer',
+  email: `mailto:${EMAIL}`,
+  url: SITE_URL,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Kampala',
+    addressCountry: 'UG',
+  },
+  knowsAbout: ['UI/UX Design', 'Product Design', 'Figma', 'React', 'Next.js', 'Design Systems'],
+  sameAs: [SOCIALS.linkedin, SOCIALS.github, SOCIALS.twitter],
+}
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable} scroll-smooth`}>
@@ -58,6 +77,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#work" className="skip-link">Skip to content</a>
         <div className="grain-overlay" aria-hidden="true" />
         <Providers>{children}</Providers>
+        <Analytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
       </body>
     </html>
   )

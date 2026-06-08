@@ -67,32 +67,34 @@ export default function Hero() {
           </span>
         </motion.div>
 
-        {/* Main name — giant editorial type */}
-        <div className="overflow-hidden leading-none mb-1">
-          <motion.h1
-            initial={{ y: '110%', opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.85, ease, delay: 0.25 }}
-            className="font-display font-bold text-charcoal leading-[0.88] tracking-tight"
-            style={{ fontSize: 'clamp(5rem, 13vw, 11rem)' }}
-          >
-            Arnold
-          </motion.h1>
-        </div>
-        <div className="overflow-hidden leading-none mb-10">
-          <motion.h1
-            initial={{ y: '110%', opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.85, ease, delay: 0.35 }}
-            className="font-display font-bold italic leading-[0.88] tracking-tight"
-            style={{
-              fontSize: 'clamp(5rem, 13vw, 11rem)',
-              color: 'rgba(26,26,26,0.18)',
-            }}
-          >
-            Onyango
-          </motion.h1>
-        </div>
+        {/* Main name — giant editorial type (single h1 for SEO/a11y) */}
+        <h1 className="font-display font-bold leading-[0.88] tracking-tight">
+          <span className="block overflow-hidden leading-none mb-1">
+            <motion.span
+              initial={{ y: '110%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.85, ease, delay: 0.25 }}
+              className="block text-charcoal"
+              style={{ fontSize: 'clamp(5rem, 13vw, 11rem)' }}
+            >
+              Arnold
+            </motion.span>
+          </span>
+          <span className="block overflow-hidden leading-none mb-10">
+            <motion.span
+              initial={{ y: '110%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.85, ease, delay: 0.35 }}
+              className="block italic"
+              style={{
+                fontSize: 'clamp(5rem, 13vw, 11rem)',
+                color: 'rgba(26,26,26,0.18)',
+              }}
+            >
+              Onyango
+            </motion.span>
+          </span>
+        </h1>
 
         {/* Tagline */}
         <motion.p
@@ -126,7 +128,7 @@ export default function Hero() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: '-110%', opacity: 0 }}
                 transition={{ duration: 0.45, ease }}
-                className="absolute inset-0 text-sm md:text-base font-bold text-amber"
+                className="absolute inset-0 text-sm md:text-base font-bold text-[#9A5400]"
               >
                 {WORDS[wordIndex]}
               </motion.span>

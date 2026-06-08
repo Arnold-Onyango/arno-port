@@ -1,5 +1,10 @@
 // Single source of truth for contact + social links.
 
+// Canonical site URL. Override per-environment with NEXT_PUBLIC_SITE_URL
+// (set it in Vercel to your real domain, e.g. https://arno.design).
+export const SITE_URL =
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://arno.design'
+
 export const EMAIL = 'arnoldonyangor@gmail.com'
 
 // Pre-filled email so the primary CTA opens a ready-to-send draft
